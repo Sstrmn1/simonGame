@@ -28,8 +28,6 @@ colores.forEach((color) => {
           gameOver();
         } else if (patron.length === patron2.length) {
           // debugger;
-          setTimeout(function () {}, 2000);
-
           let colorAleatorio = colorRandom();
 
           setTimeout(() => {
@@ -101,7 +99,7 @@ function animacionBoton(color) {
 }
 
 function gameOver() {
-  console.log("Fracaso");
+  
   juegoComenzado = false;
   patron = [];
   patron2 = [];

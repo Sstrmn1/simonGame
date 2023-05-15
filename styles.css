@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background-color: #3e3e4f;
+  background-color: #2f2f32;
 }
 
 #level-title {
@@ -22,7 +22,7 @@ body {
   display: inline-block;
   height: 100px;
   width: 100px;
-  /* border: 10px solid black; */
+  border: 10px solid rgb(15, 15, 15);
   border-radius: 20%; 
 }
 
@@ -32,19 +32,19 @@ body {
 }
 
 .red {
-  background-color: rgb(238, 35, 35);
+  background-color: rgb(226, 12, 12);
 }
 
 .green {
-  background-color: rgb(21, 228, 52);
+  background-color: rgb(4, 237, 23);
 }
 
 .blue {
-  background-color: rgb(49, 11, 241);
+  background-color: rgb(37, 0, 220);
 }
 
 .yellow {
-  background-color: rgb(237, 237, 20);
+  background-color: rgb(246, 246, 16);
 }
 
 .pressed {
