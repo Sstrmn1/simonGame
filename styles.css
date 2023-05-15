@@ -1,11 +1,11 @@
 body {
   text-align: center;
-  background-color: #011F3F;
+  background-color: #3e3e4f;
 }
 
 #level-title {
   font-family: 'Press Start 2P', cursive;
-  font-size: 3rem;
+  font-size: 2rem;
   margin:  5%;
   color: #FEF2BF;
 }
@@ -20,10 +20,10 @@ body {
 .btn {
   margin: 25px;
   display: inline-block;
-  height: 200px;
-  width: 200px;
-  border: 10px solid black;
-  border-radius: 20%;
+  height: 100px;
+  width: 100px;
+  /* border: 10px solid black; */
+  border-radius: 20%; 
 }
 
 .game-over {
@@ -32,19 +32,19 @@ body {
 }
 
 .red {
-  background-color: red;
+  background-color: rgb(238, 35, 35);
 }
 
 .green {
-  background-color: green;
+  background-color: rgb(21, 228, 52);
 }
 
 .blue {
-  background-color: blue;
+  background-color: rgb(49, 11, 241);
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: rgb(237, 237, 20);
 }
 
 .pressed {
