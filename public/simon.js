@@ -19,27 +19,35 @@ $(document).on("keydown", function () {
 colores.forEach((color) => {
   $("#" + color).on("click", function () {
     if (juegoComenzado === true) {
-      
       patron2.push(color);
       animacionBoton(color);
       for (let index = 0; index < patron2.length; index++) {
         debugger;
-        if (patron[index] != patron2[index]) {
+        // Creo que encontre el problema, al dar la ultima iteracion comienza desde el indice
+        // 0 y el indice 0 siempre seran iguales si se llega al penultimo elemento del arreglo
+        //  entonces pasa a la segunda condicion para verificar si la longitud de ambos arreglos
+        // es igual y como si son iguales, sin importar que el ultimo elemento sea otro distinto
+        // validara la condicion como verdadera y pusheara un nuevo color
+        if (patron[index] === patron2[index]) {
+          if (patron.length === patron2.length) {
+            let colorAleatorio = colorRandom();
+
+            setTimeout(() => {
+              animacionBoton(colorAleatorio);
+            }, 1000);
+
+            patron.push(colorAleatorio);
+            console.log(patron);
+            console.log(patron2);
+            patron2 = [];
+            nivel++;
+            mensaje = `Nivel ${nivel}`;
+            $("#level-title").text(mensaje);
+          }
+        } else {
+          console.log(patron);
+          console.log(patron2);
           gameOver();
-        } else if (patron.length === patron2.length) {
-          // debugger;
-          let colorAleatorio = colorRandom();
-
-          setTimeout(() => {
-            animacionBoton(colorAleatorio);
-          }, 1000);
-
-          patron.push(colorAleatorio);
-          patron2 = [];
-          nivel++;
-          mensaje = `Nivel ${nivel}`;
-          $("#level-title").text(mensaje);
-          // setTimeout(generarColorRandom, 1000);
         }
       }
     } else {
