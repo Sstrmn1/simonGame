@@ -10,20 +10,20 @@ const colores = ["green", "red", "yellow", "blue"];
 $("#level-title").text(mensaje);
 
 $(document).on("keydown", function () {
-  if (juegoComenzado === false) {    
+  if (juegoComenzado === false) {
     comenzarJuego();
     juegoComenzado = true;
   }
 });
 
-
-
 colores.forEach((color) => {
   $("#" + color).on("click", function () {
     if (juegoComenzado === true) {
+      
       patron2.push(color);
       animacionBoton(color);
       for (let index = 0; index < patron2.length; index++) {
+        debugger;
         if (patron[index] != patron2[index]) {
           gameOver();
         } else if (patron.length === patron2.length) {
@@ -99,7 +99,14 @@ function animacionBoton(color) {
 }
 
 function gameOver() {
-  
+  $("body").addClass("game-over");
+  setTimeout(() => {
+    $("body").removeClass("game-over");
+  }, 100);
+  $("body").addClass("game-over");
+  setTimeout(() => {
+    $("body").removeClass("game-over");
+  }, 100);
   juegoComenzado = false;
   patron = [];
   patron2 = [];
