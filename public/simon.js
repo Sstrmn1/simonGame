@@ -22,14 +22,9 @@ colores.forEach((color) => {
       patron2.push(color);
       animacionBoton(color);
       for (let index = 0; index < patron2.length; index++) {
-        debugger;
-        // Creo que encontre el problema, al dar la ultima iteracion comienza desde el indice
-        // 0 y el indice 0 siempre seran iguales si se llega al penultimo elemento del arreglo
-        //  entonces pasa a la segunda condicion para verificar si la longitud de ambos arreglos
-        // es igual y como si son iguales, sin importar que el ultimo elemento sea otro distinto
-        // validara la condicion como verdadera y pusheara un nuevo color
+        
         if (patron[index] === patron2[index]) {
-          if (patron.length === patron2.length) {
+          if (patron.length === patron2.length && patron[patron.length-1]===patron2[patron.length-1]) {
             let colorAleatorio = colorRandom();
 
             setTimeout(() => {
