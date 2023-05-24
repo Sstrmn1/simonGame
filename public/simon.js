@@ -3,7 +3,8 @@ let juegoComenzado = false;
 let numeroRandom = 0;
 let patron = [];
 let patron2 = [];
-let mensaje = "Presione cualquier tecla o <span class='empezar'>AQUI</span> para empezar";
+let mensaje =
+  "Presione cualquier tecla o <span class='empezar'>AQUI</span> para empezar";
 let nivel = 0;
 const colores = ["green", "red", "yellow", "blue"];
 
@@ -23,16 +24,17 @@ $(document).on("click", ".empezar", function () {
   }
 });
 
-
 colores.forEach((color) => {
   $("#" + color).on("click", function () {
     if (juegoComenzado === true) {
       patron2.push(color);
       animacionBoton(color);
       for (let index = 0; index < patron2.length; index++) {
-        
         if (patron[index] === patron2[index]) {
-          if (patron.length === patron2.length && patron[patron.length-1]===patron2[patron.length-1]) {
+          if (
+            patron.length === patron2.length &&
+            patron[patron.length - 1] === patron2[patron.length - 1]
+          ) {
             let colorAleatorio = colorRandom();
 
             setTimeout(() => {
@@ -107,9 +109,16 @@ function animacionBoton(color) {
   setTimeout(function () {
     $("#" + color).removeClass("pressed");
   }, 100);
+  reproducirSonido(color);
+}
+
+function reproducirSonido(nombreAudio) {
+  let audioElement = new Audio("/sounds/" + nombreAudio + ".mp3");
+  audioElement.play();
 }
 
 function gameOver() {
+  reproducirSonido("wrong");
   $("body").addClass("game-over");
   setTimeout(() => {
     $("body").removeClass("game-over");
@@ -122,7 +131,8 @@ function gameOver() {
   patron = [];
   patron2 = [];
   nivel = 0;
-  mensaje = "Fin del juego. Presione una tecla o <span class='empezar'>AQUI</span> para volver a empezar";
+  mensaje =
+    "Fin del juego. Presione una tecla o <span class='empezar'>AQUI</span> para volver a empezar";
 
   $("#level-title").html(mensaje);
 }
