@@ -11,7 +11,7 @@ let score = 0;
 let scoreMax = 0;
 const colores = ["green", "red", "yellow", "blue"];
 
-//Manejo del Document Object Model 
+//Manejo del Document Object Model
 
 $("#level-title").html(mensaje);
 
@@ -60,16 +60,20 @@ colores.forEach((color) => {
             patron.push(colorAleatorio);
             patron2 = [];
             nivel++;
+            score = nivel * 100;
+            if (score > scoreMax) {
+              scoreMax = score;
+              $(".score-max").text("Top score:" + scoreMax);
+            }
             mensaje = `Nivel ${nivel}`;
+            $(".score").text("Score:" + score);
             $("#level-title").text(mensaje);
           }
         } else {
           gameOver();
         }
       }
-    } else {
-      console.log("presione tecla para comenzar juego");
-    }
+    } 
   });
 });
 
@@ -85,16 +89,6 @@ function generarColorRandom() {
   animacionBoton(colorRandomico);
   patron.push(colorRandomico);
 }
-
-// function sonIguales(arreglo1, arreglo2) {
-//   // Verificar si tienen la misma longitud
-//   if (arreglo1.length !== arreglo2.length) {
-//     return false;
-//   }
-
-//   // Verificar si todos los elementos son iguales en las mismas posiciones
-//   return arreglo1.every((elemento, indice) => elemento === arreglo2[indice]);
-// }
 
 function colorRandom() {
   numeroRandom = Math.floor(Math.random() * 4);
@@ -142,6 +136,7 @@ function gameOver() {
     $("body").removeClass("game-over");
   }, 100);
   juegoComenzado = false;
+  score = 0;
   patron = [];
   patron2 = [];
   nivel = 0;
@@ -149,4 +144,9 @@ function gameOver() {
     "Fin del juego. Presione una tecla o <span class='empezar'>AQUI</span> para volver a empezar";
 
   $("#level-title").html(mensaje);
+  $(".score").text("Score:" + score);
 }
+
+//Bug detectado en esta version, puede asignar un color incluso cuando termina el juego. Eso sucede
+// cuando se presiona rapidamente muchas teclas, posiblemente a causa del timeout en el DOM
+// principal de los clicks.... revisarlo luego.
