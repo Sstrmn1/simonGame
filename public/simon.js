@@ -3,11 +3,11 @@ let juegoComenzado = false;
 let numeroRandom = 0;
 let patron = [];
 let patron2 = [];
-let mensaje = "Presione cualquier boton para empezar";
+let mensaje = "Presione cualquier tecla o <span class='empezar'>AQUI</span> para empezar";
 let nivel = 0;
 const colores = ["green", "red", "yellow", "blue"];
 
-$("#level-title").text(mensaje);
+$("#level-title").html(mensaje);
 
 $(document).on("keydown", function () {
   if (juegoComenzado === false) {
@@ -15,6 +15,14 @@ $(document).on("keydown", function () {
     juegoComenzado = true;
   }
 });
+
+$(document).on("click", ".empezar", function () {
+  if (juegoComenzado === false) {
+    comenzarJuego();
+    juegoComenzado = true;
+  }
+});
+
 
 colores.forEach((color) => {
   $("#" + color).on("click", function () {
@@ -114,7 +122,7 @@ function gameOver() {
   patron = [];
   patron2 = [];
   nivel = 0;
-  mensaje = `¡¡Game Over!! Presione una tecla para volver a empezar :) `;
+  mensaje = "Fin del juego. Presione una tecla o <span class='empezar'>AQUI</span> para volver a empezar";
 
-  $("#level-title").text(mensaje);
+  $("#level-title").html(mensaje);
 }
